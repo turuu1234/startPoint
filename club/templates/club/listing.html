@@ -1,0 +1,129 @@
+{% extends "club/layout.html" %}
+
+{% block content %}
+<style>
+    .rating-list li {
+        float: right;
+        color: #ddd;
+        padding: 10px 5px;
+    }
+
+    .rating-list li:hover,
+    .rating-list li:hover~li {
+        color: orange;
+    }
+
+    .rating-list {
+        display: inline-block;
+        list-style: none;
+    }
+
+    .checked {
+        color: orange;
+    }
+</style>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<section id="about-section" class=" pb-5">
+    <div class="container wrapabout">
+        <div class="red"></div>
+        <div class="row">
+            <div style="border: 1px solid rgb(184, 184, 184); border-radius: 10px;padding-right: 48px; padding-left: 20px;"
+                class="col-lg-7 align-items-center justify-content-left d-flex mb-3 mb-lg-0">
+                <div class="blockabout">
+                    <div class="blockabout-inner text-center text-sm-start">
+                        <div class="title-big pb-3 mb-3">
+                            <h3>{{data.title}}</h3>
+                        </div>
+                        <p class="description-p text-muted pe-0 pe-lg-0">
+                            {{data.desc_short}}
+                        </p>
+
+                        <p class="description-p text-muted pe-0 pe-lg-0">{{data.desc_detail}}</p>
+                    </div>
+
+                    <div class="d-flex mb-2">
+                        <p class="h5 mr-2">Form link: </p>
+                        <a style="text-decoration: none; padding-left: 20px; color: #ABCFF6;" href="{{data.form_link}}"
+                            class="link-info h5">Энэ холбоосыг дагана уу </a>
+                    </div>
+                    <h5 class="card-title h4 mb-2">Дундаж үнэлгээ:
+                        <span class="fa fa-star {% if data.average_rating > 0 %} checked {% endif %}"></span>
+                        <span class="fa fa-star {% if data.average_rating > 1 %} checked {% endif %}"></span>
+                        <span class="fa fa-star {% if data.average_rating > 2 %} checked {% endif %}"></span>
+                        <span class="fa fa-star {% if data.average_rating > 3 %} checked {% endif %}"></span>
+                        <span class="fa fa-star {% if data.average_rating > 4 %} checked {% endif %}"></span>
+                    </h5>
+
+                    <span class="h3">Үнэлэх:</span>
+                    <ul class="btn btn-light list-inline rating-list">
+                        <li onclick="rate(5, {{data.id}})">
+                            <i class="fa fa-star {% if data.user_rating > 4 %} checked {% endif %}" title="Rate 5"></i>
+                        </li>
+                        <li onclick="rate(4, {{ data.id }})">
+                            <i class="fa fa-star {% if data.user_rating > 3 %} checked {% endif %}" title="Rate 4"></i>
+                        </li>
+                        <li onclick="rate(3, {{ data.id }})">
+                            <i class="fa fa-star {% if data.user_rating > 2 %} checked {% endif %}" title="Rate 3"></i>
+                        </li>
+                        <li onclick="rate(2, {{ data.id }})">
+                            <i class="fa fa-star {% if data.user_rating > 1 %} checked {% endif %}" title="Rate 2"></i>
+                        </li>
+                        <li onclick="rate(1, {{ data.id }})">
+                            <i class="fa fa-star {% if data.user_rating > 0 %} checked {% endif %}" title="Rate 1"></i>
+                        </li>
+                    </ul>
+                    <div class="sosmed-horizontal pt-0 pb-3">
+                        <a style="font-size: 25px; padding-right: 10px; color: black;" style="padding-right: 10px;"
+                            href="{{data.fb_link}}"><i class="fa fa-facebook"></i></a>
+                        <a style="font-size: 25px; color: black;" href="{{data.ig_link}}"><i
+                                class="fa fa-instagram"></i></a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-5 mt-5 mt-lg-0 text-center mb-3">
+                <figure class="potoabout">
+                    <img src="{{data.image.url}}" style="max-width: 500px; max-height: 500px; object-fit:scale-down"
+                        alt="potoabout" />
+                </figure>
+                <!-- <figure class="potoabout">
+                    <img src="{{data.image1.url}}" style="width: 300px; height: 300px;" alt="potoabout" />
+                </figure>
+                <figure class="potoabout">
+                    <img src="{{data.image2.url}}" style="width: 300px; height: 300px;" alt="potoabout" />
+                </figure> -->
+            </div>
+
+        </div>
+
+    </div>
+    <!-- {% for data in datas %}
+    <div class="container">
+        <div class="media position-relative p-3 mb-2 text-white rounded" style="background-color: #585858;">
+            <div class="media-body">
+              <h5 class="mt-0">{{data.title}}</h5>
+              <p>{{data.desc_short}}</p>
+              <a href="{% url 'listing' id=data.id %}" class="stretched-link text-white">Дэлгэрэнгүй</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %} -->
+</section>
+<script>
+    const rate = (rating, post_id) => {
+        fetch(`/rate/${post_id}/${rating}/`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(rest => {
+            window.location.reload();
+            alert("Амжилтай үнэллээ");
+
+            // you may want to update the rating here
+            // to simplify stuff, I just reload the page
+        })
+    }
+</script>
+{% endblock %}

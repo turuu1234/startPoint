@@ -1,0 +1,72 @@
+{% extends 'club/layout.html' %}
+{% block content %}
+<main class="container">
+    <div class="p-4 p-md-5 mb-4 rounded text-bg-dark bg-image" 
+    style="background-image: url('https://content.ikon.mn/news/2016/11/7/722d01_NUM_BS_x974.jpg');
+           height: 540px"">
+      <div class="col-md-6 px-0">
+        <h1 class="display-4 fst-italic">{{title.school_name}}</h1>
+        <p class="lead my-3">{{title.school_desc}}</p>
+        <!-- <p class="lead mb-0"><a href="#" class="text-white fw-bold">Continue reading...</a></p> -->
+      </div>
+    </div>
+    <div class="row mb-2">
+            {% for card in cards %}
+                <div class="col-md-6">
+                    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <strong class="d-inline-block mb-2 text-success">{{card.category}}</strong>
+                        <h3 class="mb-0">{{card.title}}</h3>
+                        <div class="mb-1 text-muted">Nov 11</div>
+                        <p class="mb-auto">{{card.desc_short}}</p>
+                        <!-- <a href="{% url 'listing' id=card.id %}" class="stretched-link">Continue reading</a> -->
+                    </div>
+                    <div class="col-auto d-none d-lg-block mt-4">
+                        <!-- <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
+                        <img style="margin-right: 20px; border-radius: 10px; object-fit:scale-down" class="bd-placeholder-img mt-2" width="150" height="210" src="{{card.image.url}}" alt="Card image cap">
+                    </div>
+                    </div>
+                </div>
+            {% endfor %}
+    </div>
+    <div class="row g-5">
+      <div class="col-md-8">
+        
+  
+        <article style="background-color: white; border-radius: 20px;" class="blog-post p-3">
+          <h2 class="blog-post-title mb-1">Зорилго</h2>
+          <p class="blog-post-meta">April 9, 2023 by <a href="#">Маргад</a></p>
+  
+          <p>Бидний авсан асуулгын судалгааны үр дүнд оюутнуудын 28% нь ямар нэгэн клубт хамрагдсан байсан.Гэвч Монгол Улсын Их Сургуулийн албан ёсны сайт дээрх Бакалаврын оюутнуудын дор хаяж 40%-ийг клубт хамруулах юм.Мөн оролцох хүсэлтэй ч мэдээлэл дутмагаас үүсэн элсэлтэд амжаагүй, хүссэн клубээ олж чадаагүй оюутнууд 45%-ийг эзэлж байсан билээ.Харин бидний зорилго:</p>
+          <ul>
+            <li>Мэдээллийг нэг дороос авах</li>
+            <li>Клубуудын чанарыг сайжруулах</li>
+            <li>Үйл ажиллагааг нийтэд хүртээмжтэй байлгах</li>
+          </ul>
+        </article>
+  
+      </div>
+  
+      <div class="col-md-4">
+        <div class="position-sticky" style="top: 2rem;">
+          <div class="p-4 mb-3 bg-light rounded">
+            <h4 class="fst-italic">Топ арван клубууд</h4>
+            <p class="mb-0">Энэ эрэмблэлт нь дундаж үнэлгээгээр жагсаан болно. 7 хоног бүр </p>
+          </div>
+  
+          <div style="background-color: white; border-radius: 10px;" class="p-4">
+            <h4 class="fst-italic">Энэ долоо хоногт эрэлттэй байсан клубууд</h4>
+            <ol class="mb-0">
+              
+              {% for mydata in mydatas %}
+                <li><a class="link-success h5 fst-italic"  style="text-decoration: none; color: black;" href="{% url 'listing' mydata.id %}">{{mydata.title}} : {{mydata.average_rating}}</a></li>
+                
+              {% endfor %}
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+</main>
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends "club/layout.html" %}
+
+{% block content %}
+    <div class="container mb-5">
+        <form action="{% url 'create' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">@</span>
+                <input type="text" name="title" class="form-control" placeholder="Клубын нэр" aria-label="Title" aria-describedby="basic-addon1">
+            </div>
+            
+            <div class="mb-3">
+                <label for="basic" class="form-label">Богино тайлбар</label>
+                <div>
+                    <input type="text" name="s_desc" class="form-control" placeholder="Богино тайлбар" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                </div>
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">Дэлгэрэнгүй тайлбар</span>
+                <textarea class="form-control" name="desc" aria-label="Дэлгэрэнгүй тайлбар"></textarea>
+            </div>
+
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="inputGroupFile01">Зураг</label>
+                <input type="file" name="uploaded_file" class="form-control" id="inputGroupFile01">
+            </div>
+
+            <!-- <div class="input-group mb-3">
+                <label class="input-group-text" for="inputGroupFile01">Зураг</label>
+                <input type="file" name="uploaded_file1" class="form-control" id="inputGroupFile01">
+            </div>
+
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="inputGroupFile01">Зураг</label>
+                <input type="file" name="uploaded_file2" class="form-control" id="inputGroupFile01">
+            </div> -->
+
+
+            <label for="basic-url">facebook холбоос:</label>
+            <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+            </div>
+            <input type="text" class="form-control" name="fb_url" id="basic-url" aria-describedby="basic-addon3">
+            </div>
+
+                <label for="basic-url">instagram холбоос:</label>
+                <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+                </div>
+                <input type="text" class="form-control" name="ig_url" id="basic-url" aria-describedby="basic-addon3">
+                </div>
+                
+                <label for="basic-url">form холбоос:</label>
+                <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"  id="basic-addon3">https://example.com/users/</span>
+                </div>
+                <input type="text" class="form-control" name="form_url" id="basic-url" aria-describedby="basic-addon3">
+                </div>
+
+            
+                <select name="option1" class="form-select mb-4" aria-label="Салбар сургууль">
+                    <option selected>Салбар сургууль</option>
+                    {% for category in categories %}
+                    <option value="{{category}}">{{category}}</option>
+                    {% endfor %}
+                </select>
+            
+            <button type="submit" class="btn btn-primary mb-4">Илгээх</button>
+            {% if messages %}
+            <div class="alert alert-primary " role="alert">
+                <ul class="messages">
+                    {% for message in messages %}
+                    
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            </div>
+        </form>
+    </div>
+{% endblock %}

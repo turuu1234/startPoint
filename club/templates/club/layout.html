@@ -1,0 +1,182 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'club/style.css' %}">
+  <link rel="stylesheet" href="{% static 'club/bootstrap.css' %}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.108.0">
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+  <title>StartPoint</title>
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/headers/">
+  {% comment %} <style>
+    .logo {
+      height: 30px;
+      width: 30px;
+    }
+
+      {
+      % endcomment %
+    }
+
+      {
+      % comment %
+    }
+  </style>
+  {% endcomment %}
+</head>
+<style>
+  body{
+    background-color: #7952521f;
+  }
+  #li {
+    /* margin-top: 10px; */
+    padding-top: 0;
+    padding-bottom: 0;
+    /* background-color: gray; */
+    margin-left: 30px;
+    border-radius: 10px;
+    padding: 10px 13px;
+    color: #383838;
+    transition: 0.7s;
+  }
+
+  #li:hover {
+    background-color: #383838;
+    color: white;
+    padding: 10px 40px;
+
+  }
+
+  .content {
+    color: #fff;
+    font: sans-serif;
+    text-align: center;
+    padding: 10px 24px;
+    justify-content: center;
+  }
+
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .btn_login {
+    margin-top: 0;
+    padding: 10px 24px;
+    border: 1px solid #383838;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #383838;
+  }
+
+  .btn_login:hover {
+    /* background-color: #383838;
+    color: white; */
+    opacity: 0.6;
+    transition: 0.7s;
+  }
+
+  .btn_logout {
+    margin-top: 0;
+    padding: 10px 24px;
+    border: 1px solid #383838;
+    border-radius: 10px;
+    text-decoration: none;
+    background-color: #383838;
+    color: white;
+  }
+
+  .btn_logout:hover {
+    /* background-color: white;
+    color: #383838; */
+    opacity: 0.6;
+    transition: 0.7s;
+  }
+</style>
+
+<body>
+  <div class="container mb-4">
+    <header
+      class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-1 border-bottom">
+      <div class="col-md-1 mb-2 mb-md-0">
+        <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none mt-2">
+          {% comment %} <div class="logo"><a href="#"><img src="media/logoo.jpg"></a>
+          </div> {% endcomment %}
+          <img src="http://127.0.0.1:8000/media/logo%20icon.png" />
+          {% comment %} <h2 style="color:black">StartPoint</h2> {% endcomment %}
+        </a>
+      </div>
+
+      <!-- <ul class="nav col-12 col-md-auto  justify-content-center mb-md-0">
+            <li><a href="{% url 'bus' %}" id="li" class="nav-link " style="color:black">БУС</a></li>
+            <li><a href="{% url 'nus' %}" id="li" class="nav-link "style="color:black">НУС</a></li>
+            <li><a href="{% url 'hshuis' %}" id="li" class="nav-link " style="color:black">ХШУИС</a></li>
+            <li><a href="{% url 'bs' %}" id="li" class="nav-link " style="color:black">БС</a></li>
+            <li><a href="{% url 'ohnus' %}" id="li" class="nav-link s" style="color:black">ОХНУС</a></li>
+          </ul> -->
+      <div class="content">
+        <a href="{% url 'bus' %}" id="li" class="nav-link "> БУС</a>
+        <a href="{% url 'nus' %}" id="li" class="nav-link ">НУС</a>
+        <a href="{% url 'hshuis' %}" id="li" class="nav-link ">ХШУИС</a>
+        <a href="{% url 'bs' %}" id="li" class="nav-link ">БС</a>
+        <a href="{% url 'ohnus' %}" id="li" class="nav-link s">ОХНУС</a>
+      </div>
+
+      {% if user.is_authenticated %}
+      <!-- <p class="h4">{{user.first_name}}</p> -->
+      <div style="margin-right: 0px;" class="dropdown text-end mr-3">
+
+        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <img style="object-fit:scale-down"
+            src="https://marketplace.canva.com/EAFEits4-uw/1/0/1600w/canva-boy-cartoon-gamer-animated-twitch-profile-photo-oEqs2yqaL8s.jpg"
+            alt="mdo" width="50" height="50" class="rounded-circle">
+        </a>
+        <ul class="dropdown-menu text-small">
+          <li><a class="dropdown-item" href="{% url 'create' %}">Клубын мэдээлэл хийх</a></li>
+          <!-- <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li> -->
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li><a class="dropdown-item" href="{% url 'logout' %}">Гарах</a></li>
+        </ul>
+      </div>
+      {% else %}
+      <div class="col-md-3 text-end">
+        <a class="btn_login" href="{% url 'login' %}">Нэвтрэх</a>
+        <a class="btn_logout" href="{% url 'register' %}">Бүртгүүлэх</a>
+      </div>
+      {% endif %}
+
+
+    </header>
+
+    <!-- <div class="nav-scroller py-1 mb-2">
+          <nav class="nav d-flex justify-content-between">
+            <a class="p-2 link-secondary" href="{% url 'bus' %}">Шинжлэх ухааны сургууль</a>
+            <a class="p-2 link-secondary" href="#">Нийгмийн ухааны сургууль</a>
+            <a class="p-2 link-secondary" href="#">Хэрэглээний шинжлэх ухааны сургууль</a>
+            <a class="p-2 link-secondary" href="#">Бизнесийн сургууль</a>
+            <a class="p-2 link-secondary" href="#">Хууль зүйн сургууль</a>
+            <a class="p-2 link-secondary" href="#">Олон улсын харилцаа</a>
+          </nav>
+        </div> -->
+  </div>
+  {% block content %}
+  {% endblock %}
+  <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{% static '/club/sidebar.js' %}"></script>
+</body>
+
+</html>
