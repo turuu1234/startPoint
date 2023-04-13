@@ -21,15 +21,29 @@
     .checked {
         color: orange;
     }
+    @media (max-width:500px)
+    {
+        #contain{
+            text-align: center;
+        }
+        #contain1{
+            /* display: inline-block */
+            margin-left: 3px;
+            margin-right: 3px;
+        }
+        #img{
+            width: 70vw;
+            height: 70vw;
+        }
+    }
 </style>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
-<section id="about-section" class=" pb-5">
-    <div class="container wrapabout">
-        <div class="red"></div>
+<section id="about-section" class=" ">
+    <div id="contain" class="container wrapabout">
         <div class="row">
-            <div style="border: 1px solid rgb(184, 184, 184); border-radius: 10px;padding-right: 48px; padding-left: 20px;"
-                class="col-lg-7 align-items-center justify-content-left d-flex mb-3 mb-lg-0">
+            <div id="contain1" style="border: 1px solid rgb(184, 184, 184); border-radius: 10px;padding-right: 48px; padding-left: 20px;"
+                class="col-lg-7 align-items-center justify-content-left d-flex mb-3 mb-lg-0 pt-3">
                 <div class="blockabout">
                     <div class="blockabout-inner text-center text-sm-start">
                         <div class="title-big pb-3 mb-3">
@@ -54,25 +68,26 @@
                         <span class="fa fa-star {% if data.average_rating > 3 %} checked {% endif %}"></span>
                         <span class="fa fa-star {% if data.average_rating > 4 %} checked {% endif %}"></span>
                     </h5>
-
-                    <span class="h3">Үнэлэх:</span>
-                    <ul class="btn btn-light list-inline rating-list">
-                        <li onclick="rate(5, {{data.id}})">
-                            <i class="fa fa-star {% if data.user_rating > 4 %} checked {% endif %}" title="Rate 5"></i>
-                        </li>
-                        <li onclick="rate(4, {{ data.id }})">
-                            <i class="fa fa-star {% if data.user_rating > 3 %} checked {% endif %}" title="Rate 4"></i>
-                        </li>
-                        <li onclick="rate(3, {{ data.id }})">
-                            <i class="fa fa-star {% if data.user_rating > 2 %} checked {% endif %}" title="Rate 3"></i>
-                        </li>
-                        <li onclick="rate(2, {{ data.id }})">
-                            <i class="fa fa-star {% if data.user_rating > 1 %} checked {% endif %}" title="Rate 2"></i>
-                        </li>
-                        <li onclick="rate(1, {{ data.id }})">
-                            <i class="fa fa-star {% if data.user_rating > 0 %} checked {% endif %}" title="Rate 1"></i>
-                        </li>
-                    </ul>
+                    {% if user.is_authenticated %}
+                        <span class="h3">Үнэлэх:</span>
+                        <ul class="btn btn-light list-inline rating-list">
+                            <li onclick="rate(5, {{data.id}})">
+                                <i class="fa fa-star {% if data.user_rating > 4 %} checked {% endif %}" title="Rate 5"></i>
+                            </li>
+                            <li onclick="rate(4, {{ data.id }})">
+                                <i class="fa fa-star {% if data.user_rating > 3 %} checked {% endif %}" title="Rate 4"></i>
+                            </li>
+                            <li onclick="rate(3, {{ data.id }})">
+                                <i class="fa fa-star {% if data.user_rating > 2 %} checked {% endif %}" title="Rate 3"></i>
+                            </li>
+                            <li onclick="rate(2, {{ data.id }})">
+                                <i class="fa fa-star {% if data.user_rating > 1 %} checked {% endif %}" title="Rate 2"></i>
+                            </li>
+                            <li onclick="rate(1, {{ data.id }})">
+                                <i class="fa fa-star {% if data.user_rating > 0 %} checked {% endif %}" title="Rate 1"></i>
+                            </li>
+                        </ul>
+                    {% endif %}
                     <div class="sosmed-horizontal pt-0 pb-3">
                         <a style="font-size: 25px; padding-right: 10px; color: black;" style="padding-right: 10px;"
                             href="{{data.fb_link}}"><i class="fa fa-facebook"></i></a>
@@ -82,9 +97,9 @@
                 </div>
 
             </div>
-            <div class="col-lg-5 mt-5 mt-lg-0 text-center mb-3">
+            <div  class="col-lg-5 mt-5 mt-lg-0 text-center mb-3">
                 <figure class="potoabout">
-                    <img src="{{data.image.url}}" style="max-width: 500px; max-height: 500px; object-fit:scale-down"
+                    <img id="img" src="{{data.image.url}}" style="max-width: 500px; max-height: 500px; object-fit:scale-down"
                         alt="potoabout" />
                 </figure>
                 <!-- <figure class="potoabout">

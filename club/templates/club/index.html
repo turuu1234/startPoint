@@ -1,4 +1,5 @@
 {% extends 'club/layout.html' %}
+{% load static %}
 {% block content %}
 <style>
   #container{
@@ -7,8 +8,15 @@
     padding: 10px;
     font-family: Arial, Helvetica, sans-serif;
   }
+  @media (max-width:500px)
+  {
+    #about{
+      text-align: center;
+    }
+    
+  }
 </style>
-<main class="container">
+<main  class="container">
     <div class="p-4 p-md-5 mb-4 rounded text-bg-dark bg-image" 
     style="background-image: url('https://www.nccedu.com/wp-content/uploads/2021/03/119225156_3573359636048309_2230662440460475236_n.jpg'); background-size: auto;
            height: 500px; background-size: auto 900px; background-repeat: no-repeat;  object-fit:scale-down; ">
@@ -21,20 +29,20 @@
 
   
     <div class="row g-5"  >
-      <div class="col-md-8">
-        <div class="p-3 mb-3 bg-light rounded row">
+      <div id="about" class="col-md-8">
+        <div class="p-3 mb-3 bg-light rounded row justify-content-center">
           <h4 class="mb-2 fst-italic">StartPoint гэдэг үгний утга санаа юу вэ?</h4>
-          <img style="width: 180px; height: 180px; border-radius: 50%;  object-fit: cover; " src="https://mail.google.com/mail/u/0?ui=2&ik=d61ec9200d&attid=0.2&permmsgid=msg-f:1762694210771346075&th=1876590ba8a9e29b&view=fimg&fur=ip&sz=s0-l75-ft&attbid=ANGjdJ_tYXFw7LKrrjAO5NSP1k2xFsiuXCTW8ujxGOBN21vf2HI6Cikuv0ud8_tHmM7TLa-EWQ3-hxwMQXmmJrCrVdAqEEhrfqie8SroZPZZiy5VCs8bqdiZ0SY3MiU&disp=emb&realattid=ii_lg99jdl31" alt=""/>
+          <img style="width: 180px; height: 180px; border-radius: 50%;  object-fit: cover; " src="{% static 'club/image.png' %}" alt=""/>
           <p class="w-75 mt-5">Бидний бүтээлийн нэрний утга учир нь оюутан таньд клубуудын талаар мэдээлэл өгөх, би аль клубд орвол илүү өөрийгөө хөгжүүлж, шинэ хүмүүстэй танилцах мэдээлэлийн <strong>эхлэлийн цэг</strong> нь энэ вэб хуудас болно гэсэн санаатай. </p>
         </div>
         <article class="blog-post">
-          <div class="p-4 mb-3 bg-light rounded row">
+          <div class="p-4 mb-3 bg-light rounded row justify-content-center">
             <h4 class="mb-2 fst-italic">Оюутан бид энэ клубуудад хэрхэн үнэлгээ өгөх вэ?</h4>
-            <img style="width: 180px; height: 180px; border-radius: 50%;  object-fit: cover; " src=https://mail.google.com/mail/u/0?ui=2&ik=d61ec9200d&attid=0.1&permmsgid=msg-f:1762694210771346075&th=1876590ba8a9e29b&view=fimg&fur=ip&sz=s0-l75-ft&attbid=ANGjdJ-kY8EVgLFnAzn_e5fCmhHhJ0ZTorGZuqkMnlylY6JFR6kLlzEGwIw0ucrrN48t27shglyV0NPAsaB3UPGMLS9xzlzPmmK4m6Vfd0pjO0IyBRxhof_UVY6pWtk&disp=emb&realattid=ii_lg99ix4j0 alt=""/>
+            <img style="width: 180px; height: 180px; border-radius: 50%;  object-fit: cover; " src="{% static 'club/image1.png' %}" alt=""/>
             <p class="w-75 mt-5">Клубуудын хийсэн бүтээлийн доор коммэнт бичих, үнэлгээ өгснөөр клубуудыг үнэлж чансаа үүсгэнэ.</p>
           </div>
 
-          <div class="p-4 mb-3 bg-light rounded row">
+          <div class="p-4 mb-3 bg-light rounded row justify-content-center">
             <h4 class="mb-2 fst-italic">Бидний хийсэн судалгаанаас үзэхэд:</h4>
             <img style="width: 180px; height: 180px; border-radius: 50%;  object-fit: cover; " src="https://img.freepik.com/free-vector/telecommuting-concept-with-man-home_23-2148488959.jpg?w=740&t=st=1681036473~exp=1681037073~hmac=e58a8c8018474d884d0ac36ff842248a0e56b691e516424855e98a1e6cdf48ef" alt=""/>
             <p class="w-75 mt-5">МУИС-ын зорилгод дурдсанаар бакалаврын оюутнуудын 40-өөс дээш хувийг нь клубд хамрагдуулах юм. Бидний хийсэн судалгаанаас үзэхэд нийд оюутнуудын 30 хүрэхгүй хувь нь клубд хамрагддаг бөгөөд клубд хамрагддаггүй сурагчдын 55-аас дээш хувь нь клубд орох хүсэлтэй байдаг байна.</p>
@@ -111,9 +119,9 @@
       </div>
   
           <div class="col-md-4 mb-5">
-            <div class="position-sticky" style="top: 2rem;">
-              <div class="p-4 mb-3 bg-light rounded">
-                <h4 class="fst-italic">Топ арван клубууд</h4>
+            <div class="position-sticky " style="top: 2rem;">
+              <div class="p-5 mb-3 bg-light rounded ">
+                <h4 class="fst-italic ">Топ арван клубууд</h4>
                 <p class="mb-0">Энэ эрэмблэлт нь дундаж үнэлгээгээр жагсааx болно. 7 хоног бүр </p>
               </div>
       
